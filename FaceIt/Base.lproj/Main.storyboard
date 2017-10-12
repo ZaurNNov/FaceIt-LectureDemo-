@@ -18,17 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-Kc-PiU">
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="cHM-dq-JlR" customClass="FaceView" customModule="FaceIt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Wc6-Kc-PiU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2JD-jn-PS4"/>
-                            <constraint firstAttribute="trailing" secondItem="Wc6-Kc-PiU" secondAttribute="trailing" id="Cdr-3z-2ZT"/>
-                            <constraint firstItem="Wc6-Kc-PiU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="F2b-DD-edv"/>
-                            <constraint firstItem="Wc6-Kc-PiU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="m97-pp-McZ"/>
+                            <constraint firstItem="cHM-dq-JlR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5xD-uF-B0y"/>
+                            <constraint firstItem="cHM-dq-JlR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Rpl-DM-E4y"/>
+                            <constraint firstAttribute="trailing" secondItem="cHM-dq-JlR" secondAttribute="trailing" id="aZ2-2P-M90"/>
+                            <constraint firstItem="cHM-dq-JlR" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="rhh-Zq-P2i"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
