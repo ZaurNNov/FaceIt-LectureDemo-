@@ -11,20 +11,35 @@ import UIKit
 @IBDesignable
 class FaceView: UIView {
 
-    @IBInspectable
-    var scale: CGFloat = 0.9
+    // Public API
     
     @IBInspectable
-    var eyeOpen: Bool = true
+    var scale: CGFloat = 0.9 { didSet { setNeedsDisplay() }}
     
     @IBInspectable
-    var lineWidth: CGFloat = 5.0
+    var eyeOpen: Bool = true { didSet { setNeedsDisplay() }}
     
     @IBInspectable
-    var color: UIColor = UIColor.blue
+    var lineWidth: CGFloat = 5.0 { didSet { setNeedsDisplay() }}
     
     @IBInspectable
-    let mouthCurvature: Double = 0.5 // 1.0 - smile, -1.0 is full frow
+    var color: UIColor = UIColor.blue { didSet { setNeedsDisplay() }}
+    
+    // 1.0 - smile, -1.0 is full frow
+    @IBInspectable
+    var mouthCurvature: Double = 0.5 { didSet { setNeedsDisplay() }}
+    
+    @objc
+    func changeScale(byReactTo pinchRecognizer: UIPinchGestureRecognizer)
+    {
+        switch pinchRecognizer.state {
+        case .changed, .ended: scale *= pinchRecognizer.scale
+            pinchRecognizer.scale = 1
+        default: break
+        }
+    }
+    
+    // Private Implementation
     
     private var skullRadius: CGFloat {
         return min(bounds.size.width, bounds.size.height) / 2 * scale
@@ -53,10 +68,14 @@ class FaceView: UIView {
         let path: UIBezierPath
         
         if eyeOpen {
-            path = UIBezierPath(arcCenter: eyeCenter, radius: eyeRadius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
+            path = UIBezierPath(arcCenter: eyeCenter,
+                                radius: eyeRadius,
+                                startAngle: 0,
+                                endAngle: CGFloat.pi * 2,
+                                clockwise: true)
         } else {
             path = UIBezierPath()
-            path.move(to: CGPoint(x: eyeCenter.x, y: eyeCenter.y))
+            path.move(to: CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
             path.addLine(to: CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
         }
         
